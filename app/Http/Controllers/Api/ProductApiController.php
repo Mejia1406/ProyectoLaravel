@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Api;
  
 
 use App\Http\Controllers\Controller; 
-
+use Illuminate\Http\Request;
 use App\Models\Product; 
 
 use Illuminate\Http\JsonResponse; 
@@ -40,4 +40,17 @@ class ProductApiController extends Controller
 
     } 
 
-} 
+    public function store(Request $request): JsonResponse
+    {
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required|numeric|gt:0',
+        ]);
+
+        $product = Product::create($request->only(['name', 'price']));
+        return response()->json($product, 201);
+    }
+
+}
+
+    

@@ -13,3 +13,4 @@ Route::get('/v2/products', 'App\Http\Controllers\Api\ProductApiControllerV2@inde
 Route::get('/v2/products/{id}', 'App\Http\Controllers\Api\ProductApiControllerV2@show')->name('api.v2.product.show'); 
 Route::get('/v3/products', 'App\Http\Controllers\Api\ProductApiControllerV3@index')->name('api.v3.product.index'); 
 Route::get('/v3/products/paginate', 'App\Http\Controllers\Api\ProductApiControllerV3@paginate')->name('api.v3.product.paginate'); 
+Route::post('/products', 'App\Http\Controllers\Api\ProductApiController@store')->name('api.product.store');
